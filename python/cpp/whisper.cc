@@ -108,14 +108,14 @@ namespace ctranslate2 {
                       "Generated sequences of token IDs.")
         .def_readonly("scores", &models::WhisperGenerationResult::scores,
                       "Score of each sequence (empty if :obj:`return_scores` was disabled).")
-        .def_readonly("no_speech_prob", &models::WhisperGenerationResult::return_no_speech_prob,
+        .def_readonly("no_speech_prob", &models::WhisperGenerationResult::no_speech_prob,
                       "Probability of the no speech token (0 if :obj:`return_no_speech_prob` was disabled).")
 
         .def("__repr__", [](const models::WhisperGenerationResult& result) {
           return "WhisperGenerationResult(sequences=" + std::string(py::repr(py::cast(result.sequences)))
             + ", sequences_ids=" + std::string(py::repr(py::cast(result.sequences_ids)))
             + ", scores=" + std::string(py::repr(py::cast(result.scores)))
-            + ", no_speech_prob=" + std::string(py::repr(py::cast(result.return_no_speech_prob)))
+            + ", no_speech_prob=" + std::string(py::repr(py::cast(result.no_speech_prob)))
             + ")";
         })
         ;
@@ -220,8 +220,8 @@ namespace ctranslate2 {
              py::arg("repetition_penalty")=1,
              py::arg("no_repeat_ngram_size")=0,
              py::arg("max_length")=448,
-             py::arg("return_scores")=false,
-             py::arg("return_no_speech_prob")=false,
+             py::arg("return_scores")=true,
+             py::arg("return_no_speech_prob")=true,
              py::arg("max_initial_timestamp_index")=50,
              py::arg("suppress_blank")=true,
              py::arg("suppress_tokens")=std::vector<int>{-1},
