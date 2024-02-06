@@ -118,6 +118,7 @@ namespace ctranslate2 {
             + ", sequences_ids=" + std::string(py::repr(py::cast(result.sequences_ids)))
             + ", scores=" + std::string(py::repr(py::cast(result.scores)))
             + ", no_speech_prob=" + std::string(py::repr(py::cast(result.no_speech_prob)))
+            + ", log_probs=" + std::string(py::repr(py::cast(result.log_probs)))
             + ")";
         })
         ;
